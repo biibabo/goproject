@@ -1,1 +1,1 @@
-111222222
+https://studygolang.com/pkgdoc
