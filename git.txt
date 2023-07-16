@@ -12,3 +12,15 @@ git push origin master  // 第一次推送后，直接使用该命令即可推�
 查看远程分支git branch -r
 同时查看本地分支和远程分支git branch -a
 切换到另一个本地分支git checkout <branch-name>
+撤销最近的一次提交git reset HEAD^
+HEAD^ 表示当前 HEAD 的父提交，也就是最近的一次提交。
+创建一个新的提交，这个新的提交会撤销指定的提交撤销最近的一次提交，不会改变你的提交历史，只会添加一个新的提交。这是一种更安全的方式，特别是当你在协作环境中工作时。
+git revert HEAD
+在新的提交中删除文件，并保留文件的历史记录
+git rm filename
+git commit -m "Removed filename"
+完全从历史记录中删除文件可以使用 
+git filter-branch 或 filter-repo（推荐）命令。这两个命令会重写你的提交历史，应谨慎使用。
+git filter-branch：
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch path_to_file" --prune-empty --tag-name-filter cat -- --all
+这将遍历整个提交历史，从每个提交中删除指定的文件。然后，它将删除那些变为空提交的提交。这个过程可能需要一些时间，取决于你的提交历史的大小。
