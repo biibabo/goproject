@@ -24,3 +24,4 @@ git revert HEAD
 在新的提交中删除文件，并保留文件的历史记录
 git rm filename
 git commit -m "Removed filename"
+1S
